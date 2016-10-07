@@ -1,3 +1,4 @@
+*.jpeg
 *.tif
 assets/
 .DS_Store
