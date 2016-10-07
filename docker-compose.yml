@@ -1,0 +1,14 @@
+proxy:
+  build: proxy
+  ports:
+  - 80:80
+  links:
+  - viewer
+  - iipserver
+viewer:
+  build: goodman.viewer
+iipserver:
+  build: iipserver
+  volumes:
+    # - /Users/itma/Documents/piaras_scripts/WorkCode/code/itma.ms.goodman/iipserver/images:/var/iipsrv/images/
+    - /var/images:/var/iipsrv/images/

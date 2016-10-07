@@ -1,0 +1,283 @@
+@charset 'utf-8';
+@import 'settings';
+@import 'foundation';
+@import 'motion-ui';
+@include foundation-global-styles;
+@include foundation-grid;
+// @include foundation-flex-grid;
+@include foundation-typography;
+@include foundation-button;
+@include foundation-forms;
+// @include foundation-range-input;
+@include foundation-accordion;
+@include foundation-accordion-menu;
+@include foundation-badge;
+@include foundation-breadcrumbs;
+@include foundation-button-group;
+@include foundation-callout;
+@include foundation-close-button;
+@include foundation-menu;
+@include foundation-menu-icon;
+@include foundation-drilldown-menu;
+@include foundation-dropdown;
+@include foundation-dropdown-menu;
+@include foundation-flex-video;
+@include foundation-label;
+@include foundation-media-object;
+@include foundation-off-canvas;
+@include foundation-orbit;
+@include foundation-pagination;
+@include foundation-progress-bar;
+// @include foundation-progress-element;
+// @include foundation-meter-element;
+@include foundation-slider;
+@include foundation-sticky;
+@include foundation-reveal;
+@include foundation-switch;
+@include foundation-table;
+@include foundation-tabs;
+@include foundation-thumbnail;
+@include foundation-title-bar;
+@include foundation-tooltip;
+@include foundation-top-bar;
+@include foundation-visibility-classes;
+@include foundation-float-classes;
+// @include foundation-flex-classes;
+@include motion-ui-transitions;
+@include motion-ui-animations;
+
+
+@import url(//fonts.googleapis.com/css?family=Raleway:300,400,400i,700);
+@import url(//fonts.googleapis.com/css?family=Open+Sans:400,500,300,100,700,900);
+
+img.logo {
+	width:72px;
+	height:72px;
+	margin-bottom:18px;
+}
+
+img.tcd-logo {
+	padding-top:10px;
+	width:350px;
+	height:auto;	
+	@media #{$medium-up} {
+		width:300px;
+		padding-top:0px;		
+		margin-bottom:-20px;
+	}
+}
+
+h1.itma {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+   	font-size: rem-calc(84px);
+    margin-bottom: -10px;    	   	
+    text-align:center;
+    @media #{$medium-up} {
+    	font-size: rem-calc(96px);
+    	margin-bottom: -25px;    	
+    	text-align:left;
+    }
+    color: #000000;
+}
+
+h4.subtitle {
+    font-family: 'Raleway', sans-serif;
+    font-weight: light;
+   	font-size: rem-calc(22px);
+   	text-align:center;
+    @media #{$medium-up} { 
+    	font-size: rem-calc(24px);
+    	text-align:left;    	
+    }    
+    color: #000000;
+}
+
+.titlize {
+    margin-bottom: -1px;
+    @media #{$medium-up} {
+    	margin-bottom: -2px;
+	}    
+}
+
+h5.emph {
+    font-family: 'Raleway', sans-serif;
+   	font-size: rem-calc(21px);
+   	margin-top:5px;
+   	margin-bottom:-15px;
+    @media #{$medium-up} { 
+    	font-size: rem-calc(18px);
+    	text-align:center;
+    	margin-left:-10px;
+    	margin-top:40px;
+   		margin-bottom:-5px;
+    }  
+    color: #000000;
+}
+
+h1.goodman {
+    padding-top: 80px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    font-family: 'Raleway', sans-serif;
+    font-weight:bold;
+    font-size: rem-calc(42px);
+    color: #FFFFFF;
+
+    @media #{$medium-up} {
+    	padding-top: 120px;    	
+	    font-size: rem-calc(72px);
+    }  
+
+    @media #{$large-up} {
+    	padding-top: 150px;    	    	
+	    font-size: rem-calc(84px);
+    }    
+}
+
+h2.manuscripts {
+    margin-top: -15px;
+    font-family: 'Raleway', sans-serif;
+    font-weight:bold;
+    font-size: rem-calc(32px);
+    color: #A7FFE9;
+    @media #{$medium-up} {
+    	margin-top: -25px;    	
+	    font-size: rem-calc(52px);
+    }      
+}
+
+h3.about {
+	font-size: rem-calc(32px);
+	font-family: 'OpenSans',sans-serif;
+    font-weight: bold;
+}
+
+p.about-text {
+	font-size: rem-calc(16px);
+    font-family: 'OpenSans',sans-serif;
+    font-weight: 100;
+	@media #{$medium-up} {
+		font-size: rem-calc(21px);
+	}	
+}
+
+div.goodman-image {
+    background: url('../images/bg_image.jpg') no-repeat center center;
+    // background-attachment: fixed;	
+    background-size: cover;
+    border-top: 35px solid #A7FFE9;
+    margin-bottom: 50px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+
+}
+
+div.viewer-header {
+    border-top: 18px solid #A7FFE9;
+    background: lighten(#959595,35%);    
+    width:100%;
+}
+
+div.top-bar {
+    // background:lighten(#959595,5%);
+    font-family: 'Open Sans', sans-serif;    
+    .top-bar-title {
+        font-weight:bold;
+        font-size:rem-calc(24px);
+        color:white;
+        a {
+            color:white;
+        }
+    }   
+    .top-bar-left {
+        font-weight:bold;
+        font-size:rem-calc(18px);
+        color:white;
+        vertical-align: middle;
+    }
+    li {
+        font-size:rem-calc(16px);
+        color:white;        
+        a {
+            color:white;
+        }
+    } 
+
+
+}
+
+.uv {
+    width:100%;
+}
+
+div.viewer-background {
+    background: #211f1f;
+    width:100%;
+    height:700px;
+}
+
+div.footer {
+	background:#959595;
+	height:250px;
+    margin-top:250px;
+    background-size: cover;
+}
+
+p.footer-text {
+	color:white;
+	font-size:rem-calc(21px);
+    font-family: 'Open Sans', sans-serif;
+	padding:10px;
+	text-align:center;
+}
+
+.card {
+    margin-bottom: 50px;
+    font-family: 'Open Sans', sans-serif;
+    overflow: hidden;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    color: #272727;
+    border-radius: 2px;
+    .title {
+        line-height: 3rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+        border-bottom: 5px solid #A7FFE9;
+        a {
+        	color: black;
+        }
+    }
+    .content {
+        padding: 1.3rem;
+        font-weight: 300;
+        border-radius: 0 0 2px 2px;
+    }
+    p {
+        margin: 0;
+    }
+    .action {
+        border-top: 1px solid rgba(160, 160, 160, 0.2);
+        padding: 1.3rem;
+    }
+    p {
+        color: #5F7F7E;
+        margin-right: 1.3rem;
+        transition: color 0.3s ease;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-size: 1.15em;
+    }
+    .image {
+        position: relative;
+        .title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            padding: 1.3rem;
+            color: #fff;
+        }
+        img {
+            border-radius: 2px 2px 0px 0px;
+        }
+    }
+}

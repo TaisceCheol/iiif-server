@@ -1,0 +1,77 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goodman Manuscripts | ITMA</title>
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.min.css"></link>        
+  </head>
+  <body>
+    <!-- header -->
+    <div class="row">
+      <a href="http://www.itma.ie" alt="www.itma.ie" target="_blank">
+        <div class="medium-8 small-12 columns">
+              <h1 class='itma'>ITMA&nbsp;<img class='logo' src="images/logo.png" alt=""></h1>
+              <h4 class="subtitle titlize">Irish Traditional Music Archive</h4>
+              <h4 class="subtitle">Taisce Cheol Ducháis Éireann</h4>          
+        </div>
+      </a>
+      <a href="https://www.tcd.ie" alt="www.itma.ie" target="_blank">
+        <div class="medium-4 small-12 columns ">
+             <h5 class="emph hide-for-medium" style="text-align:center">in association with</h5>
+             <h5 class="emph show-for-medium">in association with</h5>
+             <img class='tcd-logo float-right-medium' src="images/tcd_logo.png" alt="">       
+        </div>   
+        </a>   
+    </div>
+
+    <!-- Viewer Header -->
+    <div class="viewer-header">
+        <div class="top-bar">
+          <div class="top-bar-title home"><a href="/" alt="home"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;HOME</a></div>
+          <div>
+          <div class="top-bar-left home"></div>
+            <div class="top-bar-right">
+                  <ul class="dropdown menu" data-dropdown-menu>
+                    <li><a href="/volume-one">Volume One</a></li>
+                    <li><a href="/volume-two">Volume Two</a></li>
+                    <li class="active"><a href="/volume-three">Volume Three</a></li>
+                    <li><a href="/volume-four">Volume Four</a></li>
+                  </ul>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- content -->
+    <div class='viewer-background'>
+        <div class="uv" 
+                data-locale="en-GB:English" 
+                data-config="/config.json" 
+                data-uri="http://goodman.itma.ie/manifests/TCD_MS_3196/manifest.json"
+                style="width:100%;height:668px;">              
+        </div>
+    </div>
+ 
+
+ 
+    <!-- footer -->
+    <div class="footer">
+      <div class="row">
+        <div class="small-12 columns">
+          <p class="footer-text">© Irish Traditional Music Archive | 2016</p>
+        </div>
+      </div>      
+    </div>
+
+
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/what-input/what-input.js"></script>
+    <script src="bower_components/foundation-sites/dist/foundation.js"></script>
+    <script src="js/app.js"></script>
+    <!-- include Universal Viewer -->
+    <script type="text/javascript" id="embedUV" src="js/uv-1.8.27/lib/embed.js"></script>
+  </body>
+</html>
