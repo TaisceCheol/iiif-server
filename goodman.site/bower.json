@@ -20,5 +20,14 @@
     "test",
     "tests"
   ],
+  "overrides": {
+    "foundation-sites": {
+      "main": [
+        "dist/foundation.min.js",
+        "dist/plugins/foundation.responsiveToggle.js",
+        "dist/plugins/foundation.dropdownMenu.js"
+      ]
+    }
+  },
   "private": true
 }

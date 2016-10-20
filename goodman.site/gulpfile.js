@@ -7,7 +7,13 @@ var concat = require('gulp-concat'),
     filter = require('gulp-filter'),
     mainBowerFiles = require('main-bower-files'),
     flatten = require('gulp-flatten'),
-    imagemin = require('gulp-imagemin');
+    ga = require('gulp-ga'),
+    favicons = require("gulp-favicons"),
+    htmlmin = require('gulp-htmlmin'),
+    imagemin = require('gulp-imagemin'),
+    print = require('gulp-print'),
+    del = require('del'),
+    fs = require('fs')
 
 var sassPaths = [
   'bower_components/foundation-sites/scss',
@@ -27,7 +33,7 @@ gulp.task('sass', function() {
     .pipe(gulp.dest('css'));
 });
 
-gulp.task('min-css',function() {
+gulp.task('min-css',['sass'],function() {
   return gulp.src('css/*.css')
     .pipe(cssnano())
     .pipe(gulp.dest('dist/css'))
@@ -38,18 +44,6 @@ gulp.task('min-images',function() {
     .pipe(imagemin())
     .pipe(gulp.dest('dist/images'))
 })
-
-gulp.task('min-bower-js', function() {
-        var dest_path  = 'dist/'
-        return gulp.src(mainBowerFiles('**/*.js'))
-        .pipe(concat("bower.js"))
-        .pipe(uglify())
-        .pipe(rename({
-            suffix: ".min"
-        }))
-        .pipe(gulp.dest(dest_path + '/js'))
-
-});
 
 gulp.task('min-bower-css', function() {
         var dest_path  = 'dist/'
@@ -72,10 +66,21 @@ gulp.task('min-bower-fonts', function() {
 
 });
 
-gulp.task('copy-js-folder',function() {
-  return gulp.src("js/**")
-    .pipe(gulp.dest('dist/js/'))
-})
+gulp.task('concat-bower-deps', function() {
+    return gulp.src(mainBowerFiles('**/*.js'))
+        .pipe(print())
+        .pipe(concat("bower.js"))
+        .pipe(gulp.dest("js/"))      
+
+});
+
+gulp.task('min-js',['concat-bower-deps'],function() {
+    return gulp.src(['js/bower.js','js/app.js'])
+        .pipe(print())    
+        .pipe(concat("app.js"))    
+        .pipe(uglify())
+        .pipe(gulp.dest("dist/js/"))      
+});
 
 gulp.task('copy-html',function() {
   return gulp.src("*.html")
@@ -87,8 +92,91 @@ gulp.task('copy-config',function() {
     .pipe(gulp.dest('dist/'))
 })
 
-gulp.task('build-dist', ['sass','min-css','min-images','min-bower-js','min-bower-css','min-bower-fonts','copy-js-folder','copy-config'])
+gulp.task('copy-html',function() {
+  return gulp.src("*.html")
+    .pipe(ga({url: 'goodman.itma.ie', uid: 'UA-55482452-6',tag:'body'}))  
+    .pipe(realFavicon.injectFaviconMarkups(JSON.parse(fs.readFileSync(FAVICON_DATA_FILE)).favicon.html_code))    
+    .pipe(htmlmin({collapseWhitespace: true}))    
+    .pipe(gulp.dest('dist/'))
+})
 
-gulp.task('default', ['sass'], function() {
-  gulp.watch(['scss/**/*.scss'], ['sass']);
+var realFavicon = require ('gulp-real-favicon');
+var fs = require('fs');
+
+// File where the favicon markups are stored
+var FAVICON_DATA_FILE = 'faviconData.json';
+
+// Generate the icons. This task takes a few seconds to complete.
+// You should run it at least once to create the icons. Then,
+// you should run it whenever RealFaviconGenerator updates its
+// package (see the check-for-favicon-update task below).
+gulp.task('generate-favicon', function(done) {
+  realFavicon.generateFavicon({
+    masterPicture: 'images/logo.png',
+    dest: 'dist/',
+    iconsPath: '/',
+    design: {
+      ios: {
+        pictureAspect: 'backgroundAndMargin',
+        backgroundColor: '#ffffff',
+        margin: '18%',
+        assets: {
+          ios6AndPriorIcons: false,
+          ios7AndLaterIcons: false,
+          precomposedIcons: false,
+          declareOnlyDefaultIcon: true
+        }
+      },
+      desktopBrowser: {},
+      windows: {
+        pictureAspect: 'whiteSilhouette',
+        backgroundColor: '#b91d47',
+        onConflict: 'override',
+        assets: {
+          windows80Ie10Tile: false,
+          windows10Ie11EdgeTiles: {
+            small: false,
+            medium: true,
+            big: false,
+            rectangle: false
+          }
+        }
+      },
+      androidChrome: {
+        pictureAspect: 'noChange',
+        themeColor: '#ffffff',
+        manifest: {
+          name: 'Goodman Manuscripts',
+          display: 'standalone',
+          orientation: 'notSet',
+          onConflict: 'override',
+          declared: true
+        },
+        assets: {
+          legacyIcon: false,
+          lowResolutionIcons: false
+        }
+      },
+      safariPinnedTab: {
+        pictureAspect: 'blackAndWhite',
+        threshold: 50,
+        themeColor: '#5bbad5'
+      }
+    },
+    settings: {
+      scalingAlgorithm: 'Mitchell',
+      errorOnImageTooSmall: false
+    },
+    markupFile: FAVICON_DATA_FILE
+  }, function() {
+    done();
+  });
+});
+
+gulp.task('build-dist', ['generate-favicon','sass','min-css','min-images','min-js','min-bower-css','min-bower-fonts','copy-config','copy-html'])
+
+gulp.task('default', ['build-dist'], function() {
+    gulp.watch(['scss/**/*.scss'], ['build-dist']);
+    gulp.watch(['*.html'], ['build-dist']);
+    gulp.watch("js/app.js", ["min-js"]) 
 });

@@ -1,8 +1,8 @@
 {
   "@context": "http://iiif.io/api/presentation/2/context.json", 
-  "@id": "http://goodman.itma.ie/manifests/TCD_MS_3196/TCD_MS_3196/manifest.json", 
+  "@id": "http://goodman.itma.ie/manifests/TCD_MS_3196/manifests/TCD_MS_3196/manifest.json", 
   "@type": "sc:Manifest", 
-  "label": "Goodman Manuscripts Volume 3 : TCD MS 3196 / James Goodman", 
+  "label": "IE TCD MS 3196 / Canon James Goodman", 
   "metadata": [
     {
       "label": "Creation Date", 
