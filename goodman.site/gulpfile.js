@@ -94,7 +94,7 @@ gulp.task('copy-config',function() {
 
 gulp.task('copy-html',function() {
   return gulp.src("*.html")
-    .pipe(ga({url: 'goodman.itma.ie', uid: 'UA-55482452-6',tag:'body'}))  
+    .pipe(ga({url:'auto', uid: 'UA-55482452-6',tag:'body',sendPageView:true,minify:true,anonymizeIp: false}))  
     .pipe(realFavicon.injectFaviconMarkups(JSON.parse(fs.readFileSync(FAVICON_DATA_FILE)).favicon.html_code))    
     .pipe(htmlmin({collapseWhitespace: true}))    
     .pipe(gulp.dest('dist/'))
